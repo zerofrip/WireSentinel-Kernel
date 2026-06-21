@@ -1,0 +1,10 @@
+[package]
+name = "guardian-tests"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+guardian-controller = { path = "../controller" }
+uuid = { version = "1", features = ["v4"] }

@@ -1,0 +1,53 @@
+;
+; WireSentinel Guardian — kernel WFP enforcement driver
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = WFPCALLOUTS
+ClassGuid   = {57465043-616C-6C6F-7574-5F636C617373}
+Provider    = %ManufacturerName%
+CatalogFile = Guardian.cat
+DriverVer   = 06/21/2026,0.1.0.0
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+Guardian.sys = 1
+
+[Manufacturer]
+%ManufacturerName% = Standard,NTamd64.10.0...22621,NTarm64.10.0...22621
+
+[Standard.NTamd64.10.0...22621]
+%Guardian.DeviceDesc% = Guardian_Install, Root\WireSentinelGuardian
+
+[Standard.NTarm64.10.0...22621]
+%Guardian.DeviceDesc% = Guardian_Install, Root\WireSentinelGuardian
+
+[Guardian_Install.NT]
+CopyFiles = Guardian_CopyFiles
+
+[Guardian_CopyFiles]
+Guardian.sys
+
+[Guardian_Install.NT.Services]
+AddService = WireSentinelGuardian, 0x00000002, Guardian_Service_Install
+
+[Guardian_Service_Install]
+DisplayName    = %Guardian.ServiceDesc%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %13%\Guardian.sys
+LoadOrderGroup = Extended Base
+
+[Strings]
+ManufacturerName   = "WireSentinel"
+DiskName           = "WireSentinel Guardian Installation Disk"
+Guardian.DeviceDesc = "WireSentinel Guardian Kernel Enforcement Driver"
+Guardian.ServiceDesc = "WireSentinel Guardian WFP Callout Driver"
