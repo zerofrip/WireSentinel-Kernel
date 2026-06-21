@@ -1,6 +1,4 @@
-use guardian_controller::{
-    GuardianDriverStateV1, GuardianMode, GUARDIAN_DRIVER_STATE_VERSION,
-};
+use guardian_controller::{GuardianDriverStateV1, GuardianMode, GUARDIAN_DRIVER_STATE_VERSION};
 use std::mem::size_of;
 
 #[test]
@@ -63,7 +61,10 @@ fn driver_state_mode_parsing_hybrid() {
 
 #[test]
 fn driver_state_layout_size_unchanged() {
-    assert_eq!(GuardianDriverStateV1::SIZE, size_of::<GuardianDriverStateV1>());
+    assert_eq!(
+        GuardianDriverStateV1::SIZE,
+        size_of::<GuardianDriverStateV1>()
+    );
     assert_eq!(GuardianDriverStateV1::SIZE, 60);
 }
 
@@ -72,7 +73,6 @@ fn driver_state_mode_roundtrip_bytes() {
     let mut bytes = [0u8; GuardianDriverStateV1::SIZE];
     bytes[44..48].copy_from_slice(&(GuardianMode::Ndis as u32).to_le_bytes());
 
-    let state =
-        unsafe { std::ptr::read_unaligned(bytes.as_ptr() as *const GuardianDriverStateV1) };
+    let state = unsafe { std::ptr::read_unaligned(bytes.as_ptr() as *const GuardianDriverStateV1) };
     assert_eq!(state.mode(), Some(GuardianMode::Ndis));
 }

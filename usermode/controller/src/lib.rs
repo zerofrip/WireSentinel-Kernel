@@ -16,6 +16,6 @@ pub use client_impl::{GuardianClient, GuardianError};
 pub use device_impl::GuardianDevice;
 
 #[cfg(not(windows))]
-pub use stub::{GuardianClient, GuardianError, GuardianDevice};
+pub use stub::{GuardianClient, GuardianDevice, GuardianError};
 
 pub use types::*;

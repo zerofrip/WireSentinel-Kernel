@@ -1,5 +1,5 @@
-use crate::ioctl::GUARDIAN_USER_DEVICE_PATH;
 use super::client_impl::GuardianError;
+use crate::ioctl::GUARDIAN_USER_DEVICE_PATH;
 use std::ffi::c_void;
 use std::ptr;
 use windows::core::PCWSTR;
@@ -16,7 +16,10 @@ pub struct GuardianDevice {
 
 impl GuardianDevice {
     pub fn open() -> Result<Self, GuardianError> {
-        let path: Vec<u16> = GUARDIAN_USER_DEVICE_PATH.encode_utf16().chain([0]).collect();
+        let path: Vec<u16> = GUARDIAN_USER_DEVICE_PATH
+            .encode_utf16()
+            .chain([0])
+            .collect();
         unsafe {
             let handle = CreateFileW(
                 PCWSTR(path.as_ptr()),

@@ -35,7 +35,8 @@ impl GuardianClient {
         if n < GuardianDriverStateV1::SIZE as u32 {
             return Err(GuardianError::ShortRead(n));
         }
-        let state = unsafe { std::ptr::read_unaligned(buf.as_ptr() as *const GuardianDriverStateV1) };
+        let state =
+            unsafe { std::ptr::read_unaligned(buf.as_ptr() as *const GuardianDriverStateV1) };
         if state.version != GUARDIAN_DRIVER_STATE_VERSION {
             return Err(GuardianError::InvalidVersion);
         }

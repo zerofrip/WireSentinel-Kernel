@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test --workspace
+
+  # Driver build requires Windows + WDK (self-hosted or manual).
+  driver-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check MSBuild availability
+        shell: pwsh
+        run: |
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            .\scripts\build.ps1 -Configuration Release -Platform x64
+          } else {
+            Write-Host "WDK/MSBuild not available on runner — skipping driver build"
+          }
