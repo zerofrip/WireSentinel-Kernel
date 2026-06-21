@@ -1,6 +1,6 @@
 # WireSentinel Guardian — Kernel Enforcement Platform
 
-Windows kernel-mode companion to [WireSentinel Core](https://github.com/WireSentinel/WireSentinel). Provides KMDF + WFP callout enforcement for application firewall, split tunneling, kill switch, and DNS observation.
+Windows kernel-mode companion to [WireSentinel Core](https://github.com/zerofrip/WireSentinel). Provides KMDF + WFP callout enforcement for application firewall, split tunneling, kill switch, and DNS observation.
 
 ## Requirements
 
