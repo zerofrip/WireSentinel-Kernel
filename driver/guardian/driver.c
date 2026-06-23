@@ -1,3 +1,4 @@
+#define INITGUID
 #include "driver.h"
 
 #include "../ipc/ioctl_dispatch.h"
@@ -12,7 +13,6 @@ DRIVER_INITIALIZE DriverEntry;
 
 #pragma alloc_text(INIT, DriverEntry)
 #pragma alloc_text(INIT, GuardianCreateDevice)
-#pragma alloc_text(INIT, GuardianReadRegistryGuardianMode)
 
 #define GUARDIAN_REG_GUARDIAN_MODE L"GuardianMode"
 
@@ -76,6 +76,8 @@ GuardianReadRegistryGuardianMode(
 
     return mode;
 }
+
+#pragma alloc_text(INIT, GuardianReadRegistryGuardianMode)
 
 NTSTATUS
 DriverEntry(

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include "../guardian_types.h"
 
 #define GUARDIAN_KILL_SWITCH_VERSION 1
 

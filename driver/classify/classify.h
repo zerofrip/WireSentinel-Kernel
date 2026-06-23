@@ -5,10 +5,10 @@
 #include <fwpsk.h>
 
 typedef enum _GUARDIAN_CLASSIFY_ACTION {
-    GuardianClassifyPermit = 0,
-    GuardianClassifyBlock = 1,
-    GuardianClassifyRoute = 2,
-    GuardianClassifyObserve = 3,
+    GuardianActionPermit = 0,
+    GuardianActionBlock = 1,
+    GuardianActionRoute = 2,
+    GuardianActionObserve = 3,
 } GUARDIAN_CLASSIFY_ACTION;
 
 typedef struct _GUARDIAN_CLASSIFY_RESULT {

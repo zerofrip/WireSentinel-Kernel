@@ -1,3 +1,4 @@
+#include "../guardian/driver.h"
 #include "manager.h"
 
 #include "../classify/classify.h"
@@ -34,14 +35,14 @@ GuardianAuthConnectClassifyV4(
     }
 
     switch (result.Action) {
-    case GuardianClassifyBlock:
+    case GuardianActionBlock:
         GuardianClassifyBlock(classifyOut);
         break;
-    case GuardianClassifyRoute:
+    case GuardianActionRoute:
         GuardianClassifyPermit(classifyOut);
         break;
-    case GuardianClassifyObserve:
-    case GuardianClassifyPermit:
+    case GuardianActionObserve:
+    case GuardianActionPermit:
     default:
         GuardianClassifyPermit(classifyOut);
         break;

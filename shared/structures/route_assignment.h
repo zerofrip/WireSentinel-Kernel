@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include "../guardian_types.h"
 
 #define GUARDIAN_ROUTE_ASSIGNMENT_VERSION 1
 #define GUARDIAN_MAX_SYNC_ROUTES 512

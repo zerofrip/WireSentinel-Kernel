@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include "../guardian_types.h"
 
 #define GUARDIAN_APP_POLICY_VERSION 1
 #define GUARDIAN_MAX_EXE_PATH_CHARS 520

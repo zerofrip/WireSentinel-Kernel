@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include "../guardian_types.h"
 
 #define GUARDIAN_TELEMETRY_VERSION 1
 #define GUARDIAN_PERF_STATS_VERSION 1

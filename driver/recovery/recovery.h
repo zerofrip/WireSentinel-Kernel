@@ -1,5 +1,9 @@
 #pragma once
 
+#include <ntddk.h>
+
+#include "../../shared/protocol/guardian_message.h"
+
 NTSTATUS
 GuardianRecoveryManagerInitialize(
     _In_opt_ PUNICODE_STRING RegistryPath);

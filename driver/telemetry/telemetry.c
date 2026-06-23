@@ -46,13 +46,13 @@ GuardianTelemetryRecordClassify(
     InterlockedIncrement64((volatile LONG64*)&g_Telemetry.ClassifyCount);
 
     switch (action) {
-    case GuardianClassifyBlock:
+    case GuardianActionBlock:
         InterlockedIncrement64((volatile LONG64*)&g_Telemetry.BlockCount);
         break;
-    case GuardianClassifyRoute:
+    case GuardianActionRoute:
         InterlockedIncrement64((volatile LONG64*)&g_Telemetry.RouteCount);
         break;
-    case GuardianClassifyObserve:
+    case GuardianActionObserve:
         InterlockedIncrement64((volatile LONG64*)&g_Telemetry.ObserveCount);
         break;
     default:

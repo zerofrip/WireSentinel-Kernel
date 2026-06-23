@@ -119,14 +119,14 @@ GuardianKillSwitchEvaluate(
 
     switch (mode) {
     case GuardianKsBlockAll:
-        *action = GuardianClassifyBlock;
+        *action = GuardianActionBlock;
         handled = TRUE;
         break;
     case GuardianKsAllowVpnOnly:
         if (vpnLuid != 0 && interfaceLuid == vpnLuid) {
-            *action = GuardianClassifyPermit;
+            *action = GuardianActionPermit;
         } else {
-            *action = GuardianClassifyBlock;
+            *action = GuardianActionBlock;
         }
         handled = TRUE;
         break;

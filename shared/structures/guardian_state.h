@@ -1,9 +1,8 @@
 #pragma once
 
-#include <stdint.h>
+#include "../guardian_types.h"
 
 #ifdef _KERNEL_MODE
-#include <ntddk.h>
 #else
 #include <windows.h>
 typedef LONG NTSTATUS;

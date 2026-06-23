@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../classify/classify.h"
 #include "../../shared/structures/telemetry.h"
 
 VOID

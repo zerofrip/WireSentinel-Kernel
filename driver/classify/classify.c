@@ -55,7 +55,7 @@ GuardianClassifyConnection(
     BOOLEAN foundRoute = FALSE;
     UINT8 appId[16];
     UINT64 interfaceLuid = 0;
-    GUARDIAN_CLASSIFY_ACTION action = GuardianClassifyPermit;
+    GUARDIAN_CLASSIFY_ACTION action = GuardianActionPermit;
     GUARDIAN_CLASSIFY_ACTION ksAction;
     NTSTATUS status;
 
@@ -81,17 +81,17 @@ GuardianClassifyConnection(
         GuardianCopyAppIdFromPolicy(&policy, appId);
         switch (policy.Action) {
         case GuardianPolicyBlock:
-            action = GuardianClassifyBlock;
+            action = GuardianActionBlock;
             break;
         case GuardianPolicyRoute:
-            action = GuardianClassifyRoute;
+            action = GuardianActionRoute;
             result->InterfaceLuid = policy.InterfaceLuid;
             break;
         case GuardianPolicyObserve:
-            action = GuardianClassifyObserve;
+            action = GuardianActionObserve;
             break;
         default:
-            action = GuardianClassifyPermit;
+            action = GuardianActionPermit;
             break;
         }
     }
@@ -107,18 +107,18 @@ GuardianClassifyConnection(
     if (foundRoute) {
         switch (route.RouteKind) {
         case GuardianRouteBlocked:
-            action = GuardianClassifyBlock;
+            action = GuardianActionBlock;
             break;
         case GuardianRouteVpn:
         case GuardianRouteTailnet:
-            action = GuardianClassifyRoute;
+            action = GuardianActionRoute;
             result->InterfaceLuid = route.InterfaceLuid;
             break;
         case GuardianRouteTor:
         case GuardianRouteProxy:
         case GuardianRouteAnonymous:
         case GuardianRouteChain:
-            action = GuardianClassifyPermit;
+            action = GuardianActionPermit;
             break;
         default:
             break;

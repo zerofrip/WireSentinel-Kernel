@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include "../guardian_types.h"
 
 #define GUARDIAN_DNS_CONFIG_VERSION 1
 #define GUARDIAN_DNS_CAP_OBSERVE 0x00000001u
