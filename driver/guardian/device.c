@@ -2,7 +2,9 @@
 
 #pragma alloc_text(INIT, GuardianCreateDevice)
 
-#define GUARDIAN_DEVICE_SECURITY_DESCRIPTOR SDDL_DEVOBJ_SYS_ALL_ADM_ALL
+DECLARE_CONST_UNICODE_STRING(
+    GuardianDeviceSddl,
+    L"D:P(A;;GA;;;SY)(A;;GA;;;BA)");
 
 NTSTATUS
 GuardianCreateDevice(
@@ -19,7 +21,7 @@ GuardianCreateDevice(
     UNICODE_STRING symbolicName;
     WDF_FILEOBJECT_CONFIG fileConfig;
 
-    deviceInit = WdfControlDeviceInitAllocate(Driver, &GUARDIAN_DEVICE_SECURITY_DESCRIPTOR);
+    deviceInit = WdfControlDeviceInitAllocate(Driver, &GuardianDeviceSddl);
     if (deviceInit == NULL) {
         return STATUS_INSUFFICIENT_RESOURCES;
     }
