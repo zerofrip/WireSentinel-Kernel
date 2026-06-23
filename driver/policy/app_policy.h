@@ -1,5 +1,8 @@
 #pragma once
 
+#include <ntddk.h>
+#include <fwpsk.h>
+
 #include "../../shared/structures/app_policy.h"
 
 #define GUARDIAN_MAX_POLICIES 4096

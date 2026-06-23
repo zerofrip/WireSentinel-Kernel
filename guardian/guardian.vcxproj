@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\driver\guardian\driver.c" />
+    <ClCompile Include="..\driver\guardian\guids.c" />
     <ClCompile Include="..\driver\guardian\device.c" />
     <ClCompile Include="..\driver\callouts\manager.c" />
     <ClCompile Include="..\driver\callouts\dns_observe.c" />

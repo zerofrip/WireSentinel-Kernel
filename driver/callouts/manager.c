@@ -1,4 +1,3 @@
-#include "../guardian/driver.h"
 #include "manager.h"
 
 #include "../classify/classify.h"
@@ -113,37 +112,38 @@ GuardianFlowDeleteFn(
     UNREFERENCED_PARAMETER(flowContext);
 }
 
-static const FWPS_CALLOUT1 g_AuthConnectV4Callout = {
-    GUARDIAN_CALLOUT_AUTH_CONNECT_V4_GUID,
-    0,
-    GuardianAuthConnectClassifyV4,
-    GuardianNotifyFn,
-    GuardianFlowDeleteFn,
-};
+static FWPS_CALLOUT1 g_AuthConnectV4Callout;
+static FWPS_CALLOUT1 g_AuthConnectV6Callout;
+static FWPS_CALLOUT1 g_FlowEstablishedV4Callout;
+static FWPS_CALLOUT1 g_FlowEstablishedV6Callout;
 
-static const FWPS_CALLOUT1 g_AuthConnectV6Callout = {
-    GUARDIAN_CALLOUT_AUTH_CONNECT_V6_GUID,
-    0,
-    GuardianAuthConnectClassifyV6,
-    GuardianNotifyFn,
-    GuardianFlowDeleteFn,
-};
+static VOID
+GuardianInitializeCalloutDescriptors(VOID)
+{
+    RtlZeroMemory(&g_AuthConnectV4Callout, sizeof(g_AuthConnectV4Callout));
+    g_AuthConnectV4Callout.calloutKey = GUARDIAN_CALLOUT_AUTH_CONNECT_V4_GUID;
+    g_AuthConnectV4Callout.classifyFn = GuardianAuthConnectClassifyV4;
+    g_AuthConnectV4Callout.notifyFn = GuardianNotifyFn;
+    g_AuthConnectV4Callout.flowDeleteFn = GuardianFlowDeleteFn;
 
-static const FWPS_CALLOUT1 g_FlowEstablishedV4Callout = {
-    GUARDIAN_CALLOUT_FLOW_ESTABLISHED_V4_GUID,
-    0,
-    GuardianFlowEstablishedClassify,
-    GuardianNotifyFn,
-    GuardianFlowDeleteFn,
-};
+    RtlZeroMemory(&g_AuthConnectV6Callout, sizeof(g_AuthConnectV6Callout));
+    g_AuthConnectV6Callout.calloutKey = GUARDIAN_CALLOUT_AUTH_CONNECT_V6_GUID;
+    g_AuthConnectV6Callout.classifyFn = GuardianAuthConnectClassifyV6;
+    g_AuthConnectV6Callout.notifyFn = GuardianNotifyFn;
+    g_AuthConnectV6Callout.flowDeleteFn = GuardianFlowDeleteFn;
 
-static const FWPS_CALLOUT1 g_FlowEstablishedV6Callout = {
-    GUARDIAN_CALLOUT_FLOW_ESTABLISHED_V6_GUID,
-    0,
-    GuardianFlowEstablishedClassify,
-    GuardianNotifyFn,
-    GuardianFlowDeleteFn,
-};
+    RtlZeroMemory(&g_FlowEstablishedV4Callout, sizeof(g_FlowEstablishedV4Callout));
+    g_FlowEstablishedV4Callout.calloutKey = GUARDIAN_CALLOUT_FLOW_ESTABLISHED_V4_GUID;
+    g_FlowEstablishedV4Callout.classifyFn = GuardianFlowEstablishedClassify;
+    g_FlowEstablishedV4Callout.notifyFn = GuardianNotifyFn;
+    g_FlowEstablishedV4Callout.flowDeleteFn = GuardianFlowDeleteFn;
+
+    RtlZeroMemory(&g_FlowEstablishedV6Callout, sizeof(g_FlowEstablishedV6Callout));
+    g_FlowEstablishedV6Callout.calloutKey = GUARDIAN_CALLOUT_FLOW_ESTABLISHED_V6_GUID;
+    g_FlowEstablishedV6Callout.classifyFn = GuardianFlowEstablishedClassify;
+    g_FlowEstablishedV6Callout.notifyFn = GuardianNotifyFn;
+    g_FlowEstablishedV6Callout.flowDeleteFn = GuardianFlowDeleteFn;
+}
 
 NTSTATUS
 GuardianCalloutManagerRegister(VOID)
@@ -154,6 +154,7 @@ GuardianCalloutManagerRegister(VOID)
         return STATUS_SUCCESS;
     }
 
+    GuardianInitializeCalloutDescriptors();
     GuardianDnsLayerInitialize();
 
     if (g_GuardianWdmDevice == NULL) {

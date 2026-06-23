@@ -1,4 +1,3 @@
-#define INITGUID
 #include "driver.h"
 
 #include "../ipc/ioctl_dispatch.h"
@@ -32,6 +31,7 @@ GuardianInitializeDriverState(VOID)
     g_GuardianDriverState.GuardianMode = GuardianModeWfp;
 }
 
+#pragma alloc_text(INIT, GuardianReadRegistryGuardianMode)
 static UINT32
 GuardianReadRegistryGuardianMode(
     _In_opt_ PUNICODE_STRING RegistryPath)
@@ -76,8 +76,6 @@ GuardianReadRegistryGuardianMode(
 
     return mode;
 }
-
-#pragma alloc_text(INIT, GuardianReadRegistryGuardianMode)
 
 NTSTATUS
 DriverEntry(
