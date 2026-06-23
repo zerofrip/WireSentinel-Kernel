@@ -96,8 +96,5 @@
     <ClCompile Include="..\driver\recovery\recovery.c" />
     <ClCompile Include="..\driver\filters\filters.c" />
   </ItemGroup>
-  <ItemGroup>
-    <Inf Include="guardian.inf" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
