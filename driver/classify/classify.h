@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ntddk.h>
 #include <ndis.h>
 #include <fwpsk.h>
 
