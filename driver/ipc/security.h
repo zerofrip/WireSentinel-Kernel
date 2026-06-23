@@ -1,9 +1,8 @@
 #pragma once
 
-#include <ntddk.h>
-#include <ntifs.h>
+// NT base header (ntddk.h vs ntifs.h) is established by the including TU.
+// security.c uses ntifs.h for Ps*/Ob* process APIs; ioctl_dispatch.c uses ntddk.h.
 #include <wdf.h>
-#include <wdfrequest.h>
 
 NTSTATUS
 GuardianSecurityPolicyVerifyCaller(

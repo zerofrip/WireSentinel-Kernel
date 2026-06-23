@@ -1,3 +1,7 @@
+// ntifs.h (superset of ntddk.h) provides PsLookupProcessByProcessId /
+// PsGetProcessSessionId. Must be the TU's NT base; do not also include ntddk.h.
+#include <ntifs.h>
+
 #include "security.h"
 
 static volatile HANDLE g_GuardianAllowedServicePid = NULL;
