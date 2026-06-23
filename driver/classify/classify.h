@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ndis.h>
 #include <fwpsk.h>
 
 typedef enum _GUARDIAN_CLASSIFY_ACTION {

@@ -3,6 +3,7 @@
 #include <ntddk.h>
 #include <wdf.h>
 #include <wdmsec.h>
+#include <ndis.h>
 #include <fwpsk.h>
 #include <fwpmk.h>
 
