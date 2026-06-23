@@ -1,5 +1,11 @@
 #pragma once
 
+#ifdef _KERNEL_MODE
+#include <ntddk.h>
+#else
+#include <guiddef.h>
+#endif
+
 /* Fixed GUIDs for WireSentinel Guardian WFP provider, sublayer, and callouts. */
 
 /* {8F3E2A1B-5C4D-6E7F-8A9B-0C1D2E3F4A5B} */

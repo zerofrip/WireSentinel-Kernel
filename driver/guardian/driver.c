@@ -15,6 +15,10 @@ DRIVER_INITIALIZE DriverEntry;
 
 #define GUARDIAN_REG_GUARDIAN_MODE L"GuardianMode"
 
+static UINT32
+GuardianReadRegistryGuardianMode(
+    _In_opt_ PUNICODE_STRING RegistryPath);
+
 GUARDIAN_DRIVER_STATE_V1 g_GuardianDriverState;
 PDEVICE_OBJECT g_GuardianWdmDevice = NULL;
 
