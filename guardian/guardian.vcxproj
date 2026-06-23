@@ -71,7 +71,7 @@
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Fwpkclnt.lib;WdfLdr.lib;WdfDriverEntry.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Fwpkclnt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <DriverSign>
       <FileDigestAlgorithm>sha256</FileDigestAlgorithm>

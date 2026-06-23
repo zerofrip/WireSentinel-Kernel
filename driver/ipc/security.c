@@ -32,7 +32,7 @@ GuardianSecurityPolicyVerifyCaller(
         return STATUS_ACCESS_DENIED;
     }
 
-    callerPid = IoGetRequestorProcessId(irp);
+    callerPid = (HANDLE)(ULONG_PTR)IoGetRequestorProcessId(irp);
     if (callerPid == NULL) {
         return STATUS_ACCESS_DENIED;
     }
