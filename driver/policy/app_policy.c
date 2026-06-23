@@ -166,9 +166,13 @@ GuardianAppPolicyLookup(
 
     layerId = inFixedValues->layerId;
 
-    if (layerId == FWPS_LAYER_ALE_AUTH_CONNECT_V4 || layerId == FWPS_LAYER_ALE_AUTH_CONNECT_V6) {
-        if (inFixedValues->incomingValue[FWPS_FIELD_ALE_AUTH_CONNECT_ALE_APP_ID].value.type == FWP_BYTE_BLOB_TYPE) {
-            appIdBlob = inFixedValues->incomingValue[FWPS_FIELD_ALE_AUTH_CONNECT_ALE_APP_ID].value.byteBlob;
+    if (layerId == FWPS_LAYER_ALE_AUTH_CONNECT_V4) {
+        if (inFixedValues->incomingValue[FWPS_FIELD_ALE_AUTH_CONNECT_V4_ALE_APP_ID].value.type == FWP_BYTE_BLOB_TYPE) {
+            appIdBlob = inFixedValues->incomingValue[FWPS_FIELD_ALE_AUTH_CONNECT_V4_ALE_APP_ID].value.byteBlob;
+        }
+    } else if (layerId == FWPS_LAYER_ALE_AUTH_CONNECT_V6) {
+        if (inFixedValues->incomingValue[FWPS_FIELD_ALE_AUTH_CONNECT_V6_ALE_APP_ID].value.type == FWP_BYTE_BLOB_TYPE) {
+            appIdBlob = inFixedValues->incomingValue[FWPS_FIELD_ALE_AUTH_CONNECT_V6_ALE_APP_ID].value.byteBlob;
         }
     }
 
