@@ -62,6 +62,8 @@
     <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>Guardian</TargetName>
     <Inf2CatUseLocalTime>true</Inf2CatUseLocalTime>
+    <RunInf2Cat>false</RunInf2Cat>
+    <RunInfVerif>false</RunInfVerif>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
